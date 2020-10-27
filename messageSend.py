@@ -11,7 +11,8 @@ import sys
 
 #from statistics import mean
 
-os.chdir('C:\\Users\\rs\\Desktop\\Research\\MDP\\VIP Freespeech\\Simulation\\Sim')
+path = 'C:\\Users\\roy79\\Desktop\\Research\\adhoc-sim'
+os.chdir(path)
 contacts = pd.read_csv('contacts.csv')
 
 ###########################################
@@ -20,7 +21,7 @@ contacts = pd.read_csv('contacts.csv')
 # start timestamp; change this variable depending on the dataset
 START = 0
 # run simulation for 7 days, stop broadcasting after that
-BROADCAST_DURATION = 2 * 24 * 3600
+BROADCAST_DURATION = 5 * 24 * 3600
 # drop a message 2 days after broadcasted or anyone has received it
 MAX_DELAY = 1 * 24 * 3600
 # broadcast every 1 hour
@@ -34,6 +35,9 @@ RECEIVE_INTERVAL = 10 * 60
 # This variable is used to create a different receiving schedule for every node
 END_ONLINE = 30*60
 
+#PERCENT_NODES = 0.80
+
+
 # Phones record the time each node goes online; it ranges from [START, START+60*60]
 # The phone then starts receiving messages every RECEIVE_INTERVAL and can be selected to broadcast
 # This schedule is randomly selected; 
@@ -46,11 +50,10 @@ PID = np.unique(PID)
 NUMBER_OF_PHONE = len(PID)
 PID = list(range(0,NUMBER_OF_PHONE))
 random.seed(425234)
-timeOnline = random.sample(range(START,START+END_ONLINE+1),NUMBER_OF_PHONE)
-
-#timeOnline = [0]*36
-
+timeOnline = random.sample(range(START,START+END_ONLINE+1),NUMBER_OF_PHONE)  
+#timeOnline = [0]*36  
 phones = dict(zip(PID,timeOnline))
+
 
 # messages
 # unque to each broadcasted message
@@ -196,6 +199,10 @@ def table_split(df, col):
     grouped = df.groupby(col)
     return grouped
 
+# Define a function to select percentage number of nodes in contact traces
+#def node_select(percentage):
+    
+
 
 #@profile
 def main():
@@ -203,6 +210,15 @@ def main():
     global messages_ITA
 
     time_begin = datetime.now()
+    
+    
+    # Setup
+        
+    
+    #node_select(PERCENT_NODES)
+    
+    
+    
     
     # connect to SQL server
     #db = SQLconnect(hostname, username, password, database)
@@ -228,8 +244,6 @@ def main():
         else:
             grouped_sender = pd.DataFrame()
         contacts_grouped[i] = grouped_sender
-        
-    
 
 
     for t in range(START, BROADCAST_DURATION+MAX_DELAY+1):
