@@ -25,11 +25,11 @@ create index receiver_search on contacts (node1,node2,t_start,t_end);
 
 
 
-use cambridge_students;
+#use cambridge_students;
 
 # #rows = 439017; there are 440000+ rows in the csv; why???
-select count(*) from contacts;
+#select count(*) from contacts;
 
 
 
-select * from contacts where (node1 = 123 or node2 = 123 ) and t_start <= 7200 and t_end >= 7200;
+#select * from contacts where (node1 = 123 or node2 = 123 ) and t_start <= 7200 and t_end >= 7200;

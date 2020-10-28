@@ -1,0 +1,29 @@
+Result summary
+
+Setting - Result 1
+BROADCAST_DURATION = 5 days
+MAX_DELAY = 1 day
+BROADCAST_INTERVAL = 1 hour
+NUM_BROADCAST = 3
+WAKE_INTERVAL = 10 min
+END_ONLINE = 30 min (phones go online sometime between START and START+END_ONLINE)
+PERCENT_NODES_USED = 1 (all 126 nodes)
+
+delay_mean = 49863.08 sec ~ 13.85 hr
+drop_rate = 0%
+runtime = 4:55:43.5
+
+-----------------------------------------------
+
+Setting - Result 2
+BROADCAST_DURATION = 5 days
+MAX_DELAY = 1 day
+BROADCAST_INTERVAL = 1 hour
+NUM_BROADCAST = 3
+WAKE_INTERVAL = 10 min
+END_ONLINE = 30 min (phones go online sometime between START and START+END_ONLINE)
+PERCENT_NODES_USED = 0.8 (100 nodes)
+
+delay_mean = 59099.03 ~ 16.42 hr
+drop_rate = 0%
+runtime = 3:43:30.4
