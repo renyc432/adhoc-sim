@@ -1,6 +1,8 @@
 Result summary
 
 Setting - Result 1
+contacts_synthetic 126 nodes
+
 BROADCAST_DURATION = 5 days
 MAX_DELAY = 1 day
 BROADCAST_INTERVAL = 1 hour
@@ -16,6 +18,8 @@ runtime = 4:55:43.5
 -----------------------------------------------
 
 Setting - Result 2
+contacts_synthetic 126 nodes
+
 BROADCAST_DURATION = 5 days
 MAX_DELAY = 1 day
 BROADCAST_INTERVAL = 1 hour
@@ -27,3 +31,22 @@ PERCENT_NODES_USED = 0.8 (100 nodes)
 delay_mean = 59099.03 ~ 16.42 hr
 drop_rate = 0%
 runtime = 3:43:30.4
+
+-----------------------------------------------
+
+Setting - Result 3
+contacts_real 36 nodes
+
+BROADCAST_DURATION = 5 days
+MAX_DELAY = 1 day
+BROADCAST_INTERVAL = 1 hour
+NUM_BROADCAST = 3
+WAKE_INTERVAL = 10 min
+END_ONLINE = 30 min (phones go online sometime between START and START+END_ONLINE)
+PERCENT_NODES_USED = 1 (36 nodes)
+
+delay_mean = 69410.66 ~ 19.28 hr
+drop_rate = 12.78%
+runtime = 0:56:26.441238
+
+

@@ -1,28 +1,24 @@
-# -*- coding: utf-8 -*-
-
-
 import pandas as pd
 import numpy as np
 import os
 #from statistics import mean
 from datetime import datetime
-
+import setting as st
 
 ###########################################
 ##########  CREATE DATABASE  ##############
 ###########################################
 
 #@profile
-def formatting(file):
-    filename = file
-    #filename = 'cambridge-students.tsv'
-    #mydata = pd.read_csv(filename,sep='\t')
+def build_contact(connection_file):
     
-    filename = 'cambridge-students-ONE.txt'
     time_begin = datetime.now()
-    mydata = pd.read_csv(filename,delimiter=' ')
+
+    #filename = 'cambridge-students.tsv'
+    mydata = pd.read_csv(connection_file,sep='\t')
+
+    #mydata = pd.read_csv(connection_file,delimiter=' ')
     
-    #nrows = 880333
     mydata_sim = mydata[['time','node1','node2','type']]
     mydata_sim = mydata_sim.assign(time=pd.to_numeric(mydata_sim.loc[:,'time'],downcast='integer'))
     
@@ -77,10 +73,6 @@ def formatting(file):
     
     contacts['end'] = contacts['start']+contacts['duration']
     
-    #contacts['start'] = contacts['start']
-    #contacts['end'] = contacts['end']
-    #start timestamp: 1130493332
-    
     contacts = contacts[['node1','node2','start','end']]
     contacts.to_csv('contacts.csv',index=False)
     
@@ -89,23 +81,5 @@ def formatting(file):
 
 
 ## RUN
-os.chdir('C:\\Users\\rs\\Desktop\\Research\\MDP\\VIP Freespeech\\Simulation\\Sim')
-formatting("cambridge-students-ONE.txt")
+build_contact(st.connection_real)
 
-#mydata_sim.loc[mydata_sim['type']=='up']
-# mean(contacts['end'] - contacts['start'])
-
-## DEBUG PURPOSE
-# =============================================================================
-# node1_test = mydata_sim.loc[0,'node1']
-# node2_test = mydata_sim.loc[0,'node2']
-# index = 0
-# 
-# test = mydata_sim.loc[((mydata_sim['node1']==node1_test) 
-#                       & (mydata_sim['node2']==node2_test))
-#                       | ((mydata_sim['node1']==node2_test) 
-#                       & (mydata_sim['node2']==node1_test))
-#                       & (mydata_sim.index > index)]
-# print(not(test.empty))
-# test2 = test['type']
-# =============================================================================
